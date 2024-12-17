@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lettera di Lamentela alla Preside</title>
+    <style>
+        /* Stili di base per la pagina */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 200px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        .alert {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f39c12;
+            color: white;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Scrivi una Lettera di Lamentela alla Preside</h1>
+
+    <div class="container">
+        <div class="alert" id="alert-box">
+            La lettera è stata inviata con successo!
+        </div>
+
+        <form id="complaint-form">
+            <div class="form-group">
+                <label for="name">Il tuo nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Oggetto della lamentela</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="letter">Testo della lettera</label>
+                <textarea id="letter" name="letter" required></textarea>
+            </div>
+
+            <button type="submit">Invia la Lettera</button>
+        </form>
+    </div>
+
+    <script>
+        // Gestisce l'invio del modulo
+        document.getElementById('complaint-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita il comportamento predefinito del form
+
+            // Raccogli i dati del modulo
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const letter = document.getElementById('letter').value;
+
+            // Mostra un messaggio di conferma
+            document.getElementById('alert-box').style.display = 'block';
+
+            // Pulisce il modulo
+            document.getElementById('complaint-form').reset();
+
+            // (Opzionale) Si potrebbe inviare il contenuto a un server qui
+            // Ad esempio, utilizzando fetch per inviare i dati tramite AJAX
+            /*
+            fetch('/submit-complaint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, subject, letter })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Gestione della risposta dal server
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+            });
+            */
+        });
+    </script>
+
+</body>
+</html>
